@@ -1,21 +1,21 @@
 package com.aprs.entity;
 
 public class Employee {
-	private int employee_id;
+	private String employee_id;
 	private String name;
 	private String password;
 	public Employee(){
 		
 	}
-	public Employee(int employee_id,String name,String password){
+	public Employee(String employee_id,String name,String password){
 		this.employee_id = employee_id;
 		this.name = name;
 		this.password = password;
 	}
-	public int getEmployee_id() {
+	public String getEmployee_id() {
 		return employee_id;
 	}
-	public void setEmployee_id(int employee_id) {
+	public void setEmployee_id(String employee_id) {
 		this.employee_id = employee_id;
 	}
 	public String getName() {

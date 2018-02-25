@@ -1,0 +1,41 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+#top{
+	background-color: #27A9E3;
+	height: 20%;
+	text-align: center;
+	line-height: 200px;
+	color: #fff;
+	font-size: 50px;
+}
+
+#left{
+	float: left;
+	width:20%;
+	height:600px;
+	color: #fff;	
+}
+#left a{
+	text-decoration:none;
+}
+#left ul li{
+	display: block;
+	text-align: center;
+	height:120px;
+	line-height: 120px;
+	font-size: 30px;
+	background-color: #8bceec;
+	color:#fff;
+}
+.bo{
+	border-bottom: 1px solid #fff;
+}
+#content{
+	width: 79%;
+	border:none;
+}

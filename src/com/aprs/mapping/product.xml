@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sscm.dao.ProductDao">
+  <resultMap id="ProductResultMap" type="com.sscm.entity.Product"> 
+  <result property="product_id" column="product_id"/> 
+  <result property="name" column="name"/>
+  <result property="product_spec" column="product_spe"/> 
+  <result property="sale_price" column="sale_price"/>  
+  <result property="quantity" column="quantity"/>
+  </resultMap>
+ 
+  <select id="getAllProduct" resultMap="ProductResultMap" >
+		select * from product order by product_id limit #{start},#{end}
+  </select>
+  
+  <select id="getNum" resultType="int" >
+		select count(1) from product 
+  </select>
+
+</mapper>
