@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sscm.dao.ProductDao">
-  <resultMap id="ProductResultMap" type="com.sscm.entity.Product"> 
+<mapper namespace="com.aprs.dao.ProductDao">
+  <resultMap id="ProductResultMap" type="com.aprs.entity.Product"> 
   <result property="product_id" column="product_id"/> 
   <result property="name" column="name"/>
   <result property="product_spec" column="product_spe"/> 

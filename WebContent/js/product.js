@@ -35,7 +35,7 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/getAllProduct",
+    			"url":"/aprs/getAllProduct",
     		    "dataSrc": "aaData", 
     		},
 //    		"aoColumnDefs": [
