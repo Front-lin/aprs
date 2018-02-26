@@ -27,9 +27,6 @@ public class ProductController {
 	@ResponseBody
 	public DatatablesViewPage<Product> getAllProduct(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
-		HttpSession session = request.getSession();
-		Product product = (Product)session.getAttribute("product");
-		if(product==null) return null;
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));
 		return productService.getViewSP(start, length);
