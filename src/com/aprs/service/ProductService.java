@@ -10,7 +10,7 @@ import com.aprs.entity.DatatablesViewPage;
 public interface ProductService {
 	public int getNum();
 	public List<Product> getAllProduct(int start,int end);
-	public void add(Product product) throws DuplicateKeyException;
+	public void add(Product product);
 	public void updateSale(Product product);
 	public void updateQuantity(Product product);
 	public void delete(int product_id);

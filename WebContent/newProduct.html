@@ -5,7 +5,7 @@
 <title>添加新商品</title>
 <script src="./js/jquery-1.9.1.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
-<script language="javascript" src="js/addstudent.js"></script>
+<script language="javascript" src="js/addproduct.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link href="style/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -17,21 +17,21 @@
   <tr>
     <td align="right">商品名称</td>
     <td colspan="2">
-		<input type="text" name="addsno" id="addsno" />
+		<input type="text" name="addname" id="addname" />
     </td>
     <td align="right">商品规格</td>
     <td colspan="2">
-		<input type="text" name="addsname" id="addsname" />
+		<input type="text" name="addspec" id="addspec" />
 	</td>
   </tr>
   <tr>
     <td align="right">售价</td>
     <td colspan="2">
-    <input type="text" name="addsno" id="addsno" />
+    <input type="text" name="addsale" id="addsale" />
     </td>
     <td align="right">数量</td>
     <td colspan="2">
-    <input type="text" name="addsname" id="addsname" />
+    <input type="text" name="addquantity" id="addquantity" />
   </td>
   </tr>
     <tr>
@@ -46,16 +46,16 @@
         <div class="modal-content message_align">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">¡Á</span>
+                    <span aria-hidden="true">取消</span>
                 </button>
-                <h4 class="modal-title">ÌáÊ¾</h4>
+                <h4 class="modal-title">提示</h4>
             </div>
             <div class="modal-body">
-                    <p>ÄúÈ·ÈÏÒªÔö¼Ó¸ÃÌõÐÅÏ¢Âð£¿</p>
+                    <p>确定增加该商品吗？</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="addclose" data-dismiss="modal">È¡Ïû</button>
-                <button type="button" class="btn btn-primary"  id="addHaulBtn" data-dismiss="modal">È·ÈÏ</button>
+                <button type="button" class="btn btn-default" id="addclose" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="addHaulBtn" data-dismiss="modal">确认</button>
             </div>
 		</div>
     </div>

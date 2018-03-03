@@ -1,10 +1,11 @@
 package com.aprs.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,24 @@ public class ProductController {
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));
 		return productService.getViewSP(start, length);
+	}
+	
+
+	@RequestMapping(value="addProduct", method=RequestMethod.POST)
+	public void addProduct(Product product,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(product==null){
+				out.print("false");
+			}else {
+				productService.add(product);
+				out.print("true");
+			}	
+		}
+		catch (Exception e) {
+			logger.info("addProduct",e);
+			out.print("false");
+		}
 	}
 	
 }

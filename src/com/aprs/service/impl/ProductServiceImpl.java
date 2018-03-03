@@ -30,9 +30,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void add(Product product) throws DuplicateKeyException {
+	public void add(Product product){
 		// TODO Auto-generated method stub
-
+		productDao.add(product);
 	}
 
 	@Override

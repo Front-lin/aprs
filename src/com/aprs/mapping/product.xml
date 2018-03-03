@@ -18,5 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="getNum" resultType="int" >
 		select count(1) from product 
   </select>
+   <insert id="add" parameterType="com.aprs.entity.Product">
+  	  insert into product(name,product_spec,sale_price,quantity) 
+  	  values(#{name},#{product_spec},#{sale_price},#{quantity})    
+  </insert>
 
 </mapper>
