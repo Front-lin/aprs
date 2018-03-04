@@ -23,4 +23,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	  values(#{name},#{product_spec},#{sale_price},#{quantity})    
   </insert>
 
+  <delete id="delete" >
+      delete from product where product_id = #{0}
+  </delete>
+   <update id="updateSale" parameterType="com.aprs.entity.Product">
+      update product set sale_price = #{sale_price} where product_id= #{product_id}
+  </update>
 </mapper>

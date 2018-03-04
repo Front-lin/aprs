@@ -51,10 +51,76 @@ $(document).ready( function () {
 				{"mDataProp": "product_spec"},
     			{"mDataProp":"sale_price"},
 				{"mDataProp":"quantity"},
+				{
+					 "mDataProp":"product_id",
+	                 "render": function (mDataProp, type, full, meta) {
+	                     return '<button class="btns" onclick="detailFunc(' + full.product_id + ',\'' + full.sale_price + '\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
+	                 },
+	                 "bSortable": false
+	             },
     		],
             
         });
+		$("#deleteHaulBtn").click(function() {
+			var product_id = $("#deleteHaulId").val();
+			if(product_id=="") return;
+			$.ajax({
+				type: "POST",
+				url: "/aprs/deleteProduct",
+				data: { product_id: product_id },
+				success: function(msg) {
+					table.draw();
+					//$("#delcfmOverhaul").modal('hide')
+					$("#deleteHaulId").val('');
+				},
+				error: function(a) {
+					//$("#delcfmOverhaul").modal('hide')
+					alert("删除失败");
+				}
+			});
+		});
+		$("#closemodel").click(function() {
+			$("#deleteHaulId").val('');
+		});
+		$("#closemodelsend").click(function() {
+			$("#modesale").val('');
+		});
+		$("#sendHaulBtn").click(function() {
+			var product_id = $("#saleId").val();
+			var sale_price = $("#modesale").val();
+			if(sale_price==""){
+				alert("请正确输入");
+				return;
+			}
+			$.ajax({
+						type: "POST",
+						url: "/aprs/updateSale",
+						data: { product_id: product_id,sale_price:sale_price},
+							success: function(msg) {
+								alert("修改成功");
+								table.draw();
+							},
+						error: function(a) {
+							alert("修改失败");
+						}
+					});
+		});
  });
 	 
-
+function detailFunc(product_id,sale_price){
+	$("#saleId").val(product_id);
+	$("#modesale").val(sale_price);
+	
+	$("#updateOverhaul").modal({
+        backdrop : 'static',
+        keyboard : false
+    });
+ }
+ function deletefunc(product_id){
+	$("#deleteHaulId").val(product_id);
+	$("#delcfmOverhaul").modal({
+        backdrop : 'static',
+        keyboard : false
+    });
+ }
 

@@ -15,16 +15,15 @@
 <body>
 <input type="button" value="添加新商品" 
 onclick="javascrtpt:window.location.href='newProduct.html'">
-<button>修改售价</button>
-<button>进货</button>
 <table class="table11" id="table11" >
 <thead>
   <tr>
-    <th style="width:100px">商品编号</th>
-    <th  style="width:100px">商品名称</th>
+    <th style="width:80px">商品编号</th>
+    <th  style="width:80px">商品名称</th>
     <th style="width:40px">规格</th>
     <th style="width:40px">售价</th>
     <th style="width:40px">数量</th>
+    <th style="text-align:center;width:150px;">操作</th>
   </tr>
 </thead>
 <tbody>
@@ -32,6 +31,51 @@ onclick="javascrtpt:window.location.href='newProduct.html'">
 </tbody>
 
 </table>
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">取消</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Òþ²ØÐèÒªÉ¾³ýµÄid -->
+                <input type="hidden" id="deleteHaulId" />
+                    <p>你确认你要删除该商品吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="deleteHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+<!-- Ä£Ì¬¿ò   ÐÞ¸ÄÐÅÏ¢ -->
+<div class="modal fade" id="updateOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">取消</span>
+                </button>
+                <h4 class="modal-title">商品售价</h4>
+            </div>
+            <div class="modal-body">
+            	<input type="hidden" id="saleId" />
+                售价<input type="text" name="sale_price" id="modesale" /></br>
+			</div>				
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodelsend" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="sendHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
 
 </body>
 </html>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.aprs.dao.ProductDao;
@@ -38,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void updateSale(Product product) {
 		// TODO Auto-generated method stub
-
+		productDao.updateSale(product);
 	}
 
 	@Override
@@ -50,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void delete(int product_id) {
 		// TODO Auto-generated method stub
-
+		productDao.delete(product_id);
 	}
 
 	@Override

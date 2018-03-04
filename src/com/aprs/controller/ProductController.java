@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,30 @@ public class ProductController {
 		}
 		catch (Exception e) {
 			logger.info("addProduct",e);
+			out.print("false");
+		}
+	}
+	@RequestMapping(value="/deleteProduct", method=RequestMethod.POST)
+	public void deleteProduct(int product_id,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+				productService.delete(product_id);
+		} catch (Exception e) {
+			logger.info("deleteStudents �����ˣ�",e);
+			out.print("false");
+		}
+	}
+	@RequestMapping(value="/updateSale", method=RequestMethod.POST)
+	public void updateSale(Product product,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(product==null){
+				out.print("false");
+			}else {
+				productService.updateSale(product);
+			}	
+		} catch (Exception e) {
+			logger.info("updateSale �����ˣ�",e);
 			out.print("false");
 		}
 	}
