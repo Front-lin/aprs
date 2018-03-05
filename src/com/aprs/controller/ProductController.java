@@ -1,5 +1,6 @@
 package com.aprs.controller;
 
+import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -31,7 +32,28 @@ public class ProductController {
 		response.reset();
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));
-		return productService.getViewSP(start, length);
+        String state = request.getParameter("state");
+        List<Product> list = null;
+        int num = 0;
+        if (state.equals("0")){
+        	list = productService.getAllProduct(start, length);
+        	num = productService.getNum();
+        } else if (state.equals("1")) {
+        		int product_id = Integer.parseInt(request.getParameter("product_id"));
+        		list = productService.getByNum(product_id);
+        		num = 1;
+        	 }else if (state.equals("2")) {
+	        	String name = request.getParameter("name");
+	        	num = productService.getByArgNum(name);
+	        	list = productService.getByArg(start, length, name);
+        	}else {
+        		return null;
+        	}
+        DatatablesViewPage<Product> view = new DatatablesViewPage<Product>();
+		view.setiTotalDisplayRecords(num);
+		view.setiTotalRecords(5);
+		view.setAaData(list); 
+		return view;
 	}
 	
 

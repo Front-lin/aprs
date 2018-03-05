@@ -1,4 +1,5 @@
-﻿var table;
+﻿var state = 0;
+var table;
 $(document).ready( function () {
 
 		table=$('#table11').DataTable(
@@ -37,14 +38,16 @@ $(document).ready( function () {
     		"ajax":{
     			"url":"/aprs/getAllProduct",
     		    "dataSrc": "aaData", 
+    		    "data": function ( d ) {
+                    if(state==1){
+						d.product_id = $('#idListNum').val();
+					}
+					else if(state==2){
+						d.name = $('#nameListNum').val();
+					}
+					d.state = state;
+				}
     		},
-//    		"aoColumnDefs": [
-//            {
-//               sDefaultContent: '',
-//               aTargets: [ '_all' ]
-//             }
-//             ],
-    		
     		"aoColumns" :[
 				{"mDataProp":"product_id"},
     			{"mDataProp":"name"},
@@ -61,6 +64,28 @@ $(document).ready( function () {
     		],
             
         });
+		$(document).on("click","#search1",function(){
+			var product_id = $('#idListNum').val();
+			if(product_id==""){
+				alert("请输入商品编号！");
+				return;
+			}
+			state = 1;
+		    table.draw();
+		    //table.search(args1+" "+args2).draw(false);//保留分页，排序状态
+
+		});
+		$(document).on("click","#search2",function(){
+			var name = $('#nameListNum').val();
+			if(name==""){
+				alert("请正确输入查询条件！");
+				return;
+			}
+			state = 2;
+		    table.draw();
+		    //table.search(args1+" "+args2).draw(false);//保留分页，排序状态
+
+		});
 		$("#deleteHaulBtn").click(function() {
 			var product_id = $("#deleteHaulId").val();
 			if(product_id=="") return;

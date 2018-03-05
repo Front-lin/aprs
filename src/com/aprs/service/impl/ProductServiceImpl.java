@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getAllProduct(int start, int end) {
 		// TODO Auto-generated method stub
-		return null;
+		return productDao.getAllProduct(start, end);
 	}
 
 	@Override
@@ -68,6 +68,24 @@ public class ProductServiceImpl implements ProductService {
 		view.setiTotalDisplayRecords(num);
 		view.setiTotalRecords(5);
 		return view;
+	}
+
+	@Override
+	public List<Product> getByNum(int product_id) {
+		// TODO Auto-generated method stub
+		return productDao.getByNum(product_id);
+	}
+
+	@Override
+	public List<Product> getByArg(int start, int end, String name) {
+		// TODO Auto-generated method stub
+		return productDao.getByName(start, end, name);
+	}
+
+	@Override
+	public int getByArgNum(String name) {
+		// TODO Auto-generated method stub
+		return productDao.getByNameNum(name);
 	}
 
 }
