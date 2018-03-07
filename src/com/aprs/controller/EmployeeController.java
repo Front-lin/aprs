@@ -26,7 +26,6 @@ private static Logger logger = Logger.getLogger(EmployeeController.class);
 	@RequestMapping(value="employeeLogin",method=RequestMethod.POST)
 	public void employeeLogin(String employee_id,String password,
 			HttpServletRequest request,HttpServletResponse response) throws IOException{
-		logger.info("�����¼����");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		try {
