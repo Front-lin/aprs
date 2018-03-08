@@ -10,6 +10,8 @@ public class Purchase {
 	private int product_id;
 	private int purchase_quantity;
 	private double price;
+	private String name;
+	private int product_spec;
 	
 	public int getPurchaseOrder_id() {
 		return purchaseOrder_id;
@@ -46,6 +48,18 @@ public class Purchase {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public int getProduct_spec() {
+		return product_spec;
+	}
+	public void setProduct_spec(int product_spec) {
+		this.product_spec = product_spec;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

@@ -9,7 +9,7 @@ import com.aprs.entity.Purchase;
 public interface PurchaseDao {
 	public int getNum();
 	public int getNumByArgs(@Param("date")String date);
-	public List<Purchase> getAll(@Param("start")int start,@Param("end")int end);
+	public List<Purchase> getAll(int start,int end);
 	public List<Purchase> getByNo(int purchaesOrder_id);
 	public List<Purchase> getByArg(@Param("date")String date);
 	public void delete(int purchaesOrder_id);

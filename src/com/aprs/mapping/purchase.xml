@@ -14,28 +14,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
    <select id="getAll" resultMap="PurchaseResultMap" >
    		select p.purchaseOrder_id,p.date,p.employee_name,p.product_id,s.name,s.product_spec,p.purchase_quantity,p.price
-   		form purchase p left join product s on p.product_id = s.product.id
+   		from purchaseorder p left join product s on p.product_id = s.product_id
 		order by p.purchaseOrder_id 
-		limit #{0},#{1}
   </select>
    <select id="getByNo" resultMap="PurchaseResultMap" >
 		select p.purchaseOrder_id,p.date,p.employee_name,p.product_id,s.name,s.product_spec,p.purchase_quantity,p.price 
-		from purchase p left join product s on p.product_id = s.product.id
+		from purchaseorder p left join product s on p.product_id = s.product_id
 		where p.purchaseOrder_id = #{purchaseOrder_id} 
   </select>
   <select id="getByArg" resultMap="PurchaseResultMap" >
 		select p.purchaseOrder_id,p.date,p.employee_name,p.product_id,s.name,s.product_spec,p.purchase_quantity,p.price 
-		from purchase p left join product s on p.product_id = s.product.id
+		from purchaseorder p left join product s on p.product_id = s.product_id
 		where 1=1 and p.date= #{date}
   </select>
    <select id="getNum" resultType="int" >
-		select count(1) from purchase 
+		select count(1) from purchaseorder 
   </select>
   <select id="getNumByArgs" resultType="int" >
-		select count(1) from purchase where 1=1 and date= #{date}
+		select count(1) from purchaseorder where 1=1 and date= #{date}
   </select>
     <delete id="delete"  >
-      delete from purchase where purchaseOrder_id=#{0}
+      delete from purchaseorder where purchaseOrder_id=#{0}
   </delete>
   
 </mapper>

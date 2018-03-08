@@ -28,6 +28,7 @@ public class PurchaseController {
 	@ResponseBody
 	public DatatablesViewPage<Purchase> getPurchase(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
+		System.out.println(123);
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));  
         String state = request.getParameter("state");
