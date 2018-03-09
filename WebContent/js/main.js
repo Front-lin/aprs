@@ -7,3 +7,7 @@ function pro(){
 function b(){
 	$("#content").attr("src","purchase.html");
 }
+
+function sa(){
+	$("#content").attr("src","sale.html");
+}
