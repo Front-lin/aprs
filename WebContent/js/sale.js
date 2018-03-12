@@ -63,13 +63,15 @@ $(document).ready( function () {
                  "sClass": "text-center",
 				 "mDataProp":"sale_id",
                  "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btns">详情</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
+                	 return '<button class="btns" onclick="saleDetail(' + mDataProp + ')">详情</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
                  },
                  "bSortable": false
              },
     		],
             
         });
+	
+
 
 	$(document).on("click","#search6",function(){
 		var sale_id = $('#sid').val();
@@ -134,7 +136,12 @@ $(document).ready( function () {
         backdrop : 'static',
         keyboard : false
     });
- }
-	 
-
+	}
+function saleDetail(sale_id){
+	var id = sale_id;
+	var title = "详情";
+	var url="saleDetail.html？sale_id="+sale_id;
+	window.location.href="./saleDetail.html?sale_id="+sale_id;
+ 	}
+ 
 
