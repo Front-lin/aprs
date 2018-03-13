@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
@@ -12,12 +13,14 @@
 <body> 
 
 <div class="login">
-    <div class="message">demo</div>
+    <div class="message">登录</div>
     <div id="darkbannerwrap"></div>
 	<input name="action" value="login" type="hidden">
 	<input name="username" id="user" placeholder="用户名"  required oninvalid="setCustomValidity('请输入用户名');" oninput="setCustomValidity('');" type="text">
 	<hr class="hr15">
 	<input name="password" id="key" placeholder="密码" required oninvalid="setCustomValidity('密码不能为空');" oninput="setCustomValidity('');" type="password">
+	<hr class="hr15">
+	<input type="radio" name="bm" value="1"  checked="checked"  /><span>管理员登录</span>&nbsp;&nbsp;<input type="radio" name="bm" value="2"/><span>销售员登录</span>
 	<hr class="hr15">
 	<input value="登录" style="width:100%;" type="button" id="login">
 	<hr class="hr20">
@@ -30,6 +33,7 @@
             $("#login").click(function () {
                 var name = $("#user").val();
                 var pwd = $("#key").val();
+				var val = $("input[name='bm']:checked").val();
                 if (name == "") {
                     alert("用户名不能为空！");
                     return false;
@@ -41,11 +45,14 @@
                 $.ajax({
 					type: "POST",
 					url: "/aprs/employeeLogin",
-					data: { employee_id:name,password:pwd},
+					data: { id:name,password:pwd,value:val},
 						success: function(msg) {
-							if (msg == "true") {
+							if (msg == "manager") {
 								window.location.href="main.html";
 							} 
+							else if(msg == "saler"){
+								window.location.href="salePage.html";
+							}
 							else if (msg=="false"){
 								alert("密码或用户名错误");
 							}

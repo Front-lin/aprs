@@ -11,3 +11,6 @@ function b(){
 function sa(){
 	$("#content").attr("src","sale.html");
 }
+function infor(){
+	$("#content").attr("src","pinformation.html");
+}

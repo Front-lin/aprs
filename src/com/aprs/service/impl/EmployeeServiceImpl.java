@@ -14,9 +14,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Resource
 	private EmployeeDao employeeDao;
 	
-	public Employee login(String employee_id, String password) {
+	public Employee login(String id, String password) {
 		// TODO Auto-generated method stub
-		return employeeDao.login(employee_id,password);
+		return employeeDao.login(id,password);
 	}
 
 }

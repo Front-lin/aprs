@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.aprs.entity.Employee;
 import com.aprs.service.EmployeeService;
+import com.aprs.service.SalerService;
 
 @Controller
 public class EmployeeController {
@@ -22,24 +22,36 @@ private static Logger logger = Logger.getLogger(EmployeeController.class);
 	
 	@Resource
 	private EmployeeService employeeService;
+	@Resource
+	private SalerService salerService;
 	
 	@RequestMapping(value="employeeLogin",method=RequestMethod.POST)
-	public void employeeLogin(String employee_id,String password,
+	public void employeeLogin(String id,String password,int value,
 			HttpServletRequest request,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
+		Object obj = null;
+		String key = null;
 		try {
-			Employee employee = employeeService.login(employee_id, password);
-			if (employee!=null) {
-				session.setAttribute("employee", employee);
-				out.print("true");
+			if(value==1){
+				obj = employeeService.login(id, password);
+				key = "manager";
+			}if(value==2){
+				obj = salerService.login(id, password);
+				key = "saler";
+			}
+		} catch (Exception e) {
+			logger.info("login");
+			e.printStackTrace();
+		}finally{
+			System.out.print(obj);
+			System.out.print(key);
+			if(key!=null&&obj!=null){
+				session.setAttribute(key, obj);
+				out.print(key);
 			}else {
 				out.print("false");
 			}
-			
-		} catch (Exception e) {
-			out.print("false");
-			logger.info("employeeLogin", e);
 		}
 	}
 }
