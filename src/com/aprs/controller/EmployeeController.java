@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.aprs.entity.Employee;
 import com.aprs.service.EmployeeService;
 import com.aprs.service.SalerService;
 
@@ -44,14 +45,37 @@ private static Logger logger = Logger.getLogger(EmployeeController.class);
 			logger.info("login");
 			e.printStackTrace();
 		}finally{
-			System.out.print(obj);
-			System.out.print(key);
 			if(key!=null&&obj!=null){
 				session.setAttribute(key, obj);
 				out.print(key);
+				System.out.println(key);
 			}else {
 				out.print("false");
 			}
+		}
+	}
+	@RequestMapping(value="/changepassword",method=RequestMethod.POST)
+	public void adminpwd(String opwd,String npwd,HttpServletRequest request,
+			HttpServletResponse response)throws IOException{
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		Employee admin = (Employee)session.getAttribute("manager");
+		System.out.println(admin);
+		if(admin==null){
+			out.print("false");
+			return;
+		}
+		if(!admin.getPassword().equals(opwd)){
+			out.print("worng");
+			return;
+		}
+		try {
+			admin.setPassword(npwd);
+			employeeService.change(admin);
+			out.print("true");
+		} catch (Exception e) {
+			logger.info("admin", e);
+			out.print("false");
 		}
 	}
 }

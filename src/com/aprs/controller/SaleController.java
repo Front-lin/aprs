@@ -26,7 +26,7 @@ public class SaleController {
 	private static Logger logger = Logger.getLogger(SaleController.class);
 	@RequestMapping(value="/getSale", method=RequestMethod.GET)
 	@ResponseBody
-	public DatatablesViewPage<Sale> getPurchase(HttpServletRequest request,HttpServletResponse response){
+	public DatatablesViewPage<Sale> getSale(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
 		System.out.println(123);
 		int start =Integer.parseInt(request.getParameter("start"));    

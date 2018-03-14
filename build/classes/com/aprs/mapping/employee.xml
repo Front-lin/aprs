@@ -11,4 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="login" resultMap="EmployeeResultMap" >
 		select * from employee where employee_id=#{employee_id} and password=#{password}
   </select>
+    <update id="change" parameterType="com.aprs.entity.Employee" >
+      update employee set password=#{password} where employee_id=#{employee_id}
+  </update>
 </mapper>

@@ -14,13 +14,15 @@ li{
 	font-size: 50px;
 }
 
-#left{
+#item{
 	float: left;
 	width:20%;
-	height:600px;
-	color: #fff;	
+	background-color: #3ebbf36b;
 }
-#left a{
+a{
+	text-decoration:none;
+}
+a:hover,a:visited,a:link,a:active{
 	text-decoration:none;
 }
 #left ul li{
@@ -39,4 +41,18 @@ li{
 	width: 79%;
 	border:none;
 	scrolling:no;
+}
+
+.panel{
+	background-color: #3ebbf36b;
+	color:#fff;	
+}
+.panel-title{
+	font-size: 20px;
+}
+.list-group{
+	text-align:left;
+}
+.list-group li{
+	padding-left: 125px;
 }

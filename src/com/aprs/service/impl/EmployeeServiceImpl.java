@@ -19,4 +19,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.login(id,password);
 	}
 
+	@Override
+	public void change(Employee admin) {
+		// TODO Auto-generated method stub
+
+		employeeDao.change(admin);
+	}
+
 }
