@@ -46,6 +46,12 @@ public class ProviderServiceImpl implements ProviderService {
 		providerDao.delete(pid);
 		
 	}
+
+	@Override
+	public List<Provider> getProviderItem() {
+		// TODO Auto-generated method stub
+		return providerDao.getProviderItem();
+	}
 	
 	
 }

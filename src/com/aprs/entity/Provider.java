@@ -3,7 +3,6 @@ package com.aprs.entity;
 public class Provider {
 	private int pid;
 	private String pname;
-	private String linkman;
 	private String ptel;
 	private String paddress;
 	public int getPid() {
@@ -18,12 +17,6 @@ public class Provider {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getLinkman() {
-		return linkman;
-	}
-	public void setLinkman(String linkman) {
-		this.linkman = linkman;
-	}
 	public String getPtel() {
 		return ptel;
 	}
@@ -35,6 +28,11 @@ public class Provider {
 	}
 	public void setPaddress(String paddress) {
 		this.paddress = paddress;
+	}
+	@Override
+	public String toString() {
+		return "Provider [pid=" + pid + ", pname=" + pname  + ", ptel=" + ptel + ", paddress=" + paddress
+				+  "]";
 	}
 	
 	

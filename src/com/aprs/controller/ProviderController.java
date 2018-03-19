@@ -1,6 +1,9 @@
 package com.aprs.controller;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,11 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.aprs.entity.DatatablesViewPage;
 import com.aprs.entity.Provider;
 import com.aprs.service.ProviderService;
@@ -44,6 +49,15 @@ public class ProviderController {
 		return view;
 	}
 	
+	@RequestMapping(value="/getProviderItem",method=RequestMethod.GET)
+	@ResponseBody
+	public void getProviderItem(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		response.reset();
+		PrintWriter out = response.getWriter();
+        List<Provider> beanList = null;
+        beanList = providerService.getProviderItem(); 
+        out.print(beanList);
+	}
 
 	@RequestMapping(value="addProvider", method=RequestMethod.POST)
 	public void addProvider(Provider provider,HttpServletResponse response) throws IOException{
@@ -86,4 +100,5 @@ public class ProviderController {
 		}
 	}
 	
+
 }

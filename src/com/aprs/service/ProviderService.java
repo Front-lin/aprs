@@ -10,4 +10,5 @@ public interface ProviderService {
 	public void add(Provider provider);
 	public void updateProvider(Provider provider);
 	public void delete(int pid);
+	public List<Provider> getProviderItem();
 }

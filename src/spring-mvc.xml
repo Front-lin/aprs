@@ -46,21 +46,17 @@
         <!-- 内存中的最大值 -->  
         <property name="maxInMemorySize" value="40960" />    
     </bean>   
-    <!--
-     <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/student/**"/>
-        <bean class="com.sscm.interceptors.StudentInterceptor"></bean>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/**"/>
-        <bean class="com.sscm.interceptors.AdminInterceptors"></bean>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/teacher/**"/>
-        <bean class="com.sscm.interceptors.TeacherInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors> 
-      -->
+ <!-- 处理请求返回json字符串的中文乱码问题 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
 </beans>  
