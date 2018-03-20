@@ -51,12 +51,9 @@ public class ProviderController {
 	
 	@RequestMapping(value="/getProviderItem",method=RequestMethod.GET)
 	@ResponseBody
-	public void getProviderItem(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public List<Provider> getProviderItem(HttpServletRequest request,HttpServletResponse response) {
 		response.reset();
-		PrintWriter out = response.getWriter();
-        List<Provider> beanList = null;
-        beanList = providerService.getProviderItem(); 
-        out.print(beanList);
+        return providerService.getProviderItem(); 
 	}
 
 	@RequestMapping(value="addProvider", method=RequestMethod.POST)
