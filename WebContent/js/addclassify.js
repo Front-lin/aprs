@@ -7,23 +7,22 @@
 	});
 	
 	$("#addHaulBtn").click(function() {
-		var pname = $("#addname").val();
-		var ptel = $("#addspec").val();
-		var paddress = $("#addsale").val();
-		if(pname==""){
-			alert("供应商名称不能为空");
+		var cname = $("#addcname").val();
+		var provider = $("#selectprovider").find("option:selected").val();
+		if(cname==""||provider==""){
+			alert("请填入完整信息");
 			return;
 		}
 		$.ajax({
 			type: "POST",
-			url: "/aprs/addProvider",
-			data: { pname:pname,ptel:ptel,paddress:paddress},
+			url: "/aprs/addClassify",
+			data: { cname:cname,pid:provider},
 					success: function(msg) {
 						if (msg=="false"){
 							alert("添加失败！");
 						} else if(msg=="true"){
 							alert("添加成功！");
-							window.location.href = "provider.html";
+							window.location.href = "classify.html";
 						}
 					},
 					error: function(a) {

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aprs.entity.Classify;
 import com.aprs.entity.DatatablesViewPage;
+import com.aprs.entity.Provider;
 import com.aprs.service.ClassifyDetailService;
 import com.aprs.service.ClassifyService;
 
@@ -54,6 +55,22 @@ public class ClassifyController {
 				out.print("true");	
 		} catch (Exception e) {
 			logger.info("delete",e);
+			out.print("false");
+		}
+	}
+	@RequestMapping(value="addClassify", method=RequestMethod.POST)
+	public void addClassify(Classify classify,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(classify==null){
+				out.print("false");
+			}else {
+				classifyService.add(classify);
+				out.print("true");
+			}	
+		}
+		catch (Exception e) {
+			logger.info("addclassify",e);
 			out.print("false");
 		}
 	}
