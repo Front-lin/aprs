@@ -13,4 +13,5 @@ public interface SaleDao {
 	public List<Sale> getByNo(int sale_id);
 	public List<Sale> getByArg(@Param("sale_date")String sale_date);
 	public void delete(int sale_id);
+	public int insert(Sale sale);
 }

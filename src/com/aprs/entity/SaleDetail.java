@@ -8,6 +8,14 @@ public class SaleDetail {
 	private int quantity;
 	private double sale_price;
 	private double sum_price;
+	public SaleDetail(){
+		
+	}
+	public SaleDetail(int sale_id, int product_id, int quantity){
+		setSale_id(sale_id);
+		setProduct_id(product_id);
+		setQuantity(quantity);
+	}
 	public int getSale_id() {
 		return sale_id;
 	}

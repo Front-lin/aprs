@@ -27,5 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="delete"  >
       delete from sale where sale_id=#{0}
   </delete>
+ <insert id="insert" keyProperty="sale_id" useGeneratedKeys="true" parameterType="com.aprs.entity.Sale">
+	insert into sale(sale_date,sum) values(#{sale_date},#{sum})
+ </insert>
   
 </mapper>

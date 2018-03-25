@@ -1,5 +1,8 @@
 package com.aprs.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,13 +10,20 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.aprs.dao.SaleDao;
+import com.aprs.dao.SaleDetailDao;
 import com.aprs.entity.Sale;
+import com.aprs.entity.SaleDetail;
 import com.aprs.service.SaleService;
 @Service("saleService")
 public class SaleServiceImpl implements SaleService {
 
 	@Resource
 	private SaleDao saleDao;
+	
+	@Resource
+	private SaleDetailDao saleDetailDao;
+	
+	private  SimpleDateFormat sdf =  new SimpleDateFormat( "yyyy-MM-dd" );
 	
 	@Override
 	public List<Sale> getAll(int start, int end) {
@@ -55,6 +65,18 @@ public class SaleServiceImpl implements SaleService {
 		// TODO Auto-generated method stub
 
 		saleDao.delete(sale_id);
+	}
+
+	@Override
+	public void settle(int[][] sales, double sum) {
+		Sale s = new Sale(sdf.format(new Date()), sum);
+		saleDao.insert(s);
+		List<SaleDetail> list = new ArrayList<SaleDetail>();
+		for(int[] sale: sales){
+			list.add(new SaleDetail(s.getSale_id(), sale[0], sale[1]));
+		}
+		saleDetailDao.settle(list);
+		
 	}
 
 }

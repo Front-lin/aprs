@@ -11,4 +11,5 @@ public interface SaleService {
 	public int getNumByArgs(String sale_date);
 	public List<Sale> getByArg(String sale_date);
 	public void delete(int sale_id);
+	public void settle(int[][] sales, double sum);
 }

@@ -21,4 +21,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectNum" resultType="int">
       select count(1) from saledetail where 1=1 and sale_id = #{0}
   </select>
+  <insert id="settle" >
+   insert into saledetail(sale_id,product_id,quantity) values
+   <foreach collection="list" item="item" separator="," open="(" close=")">  
+         (#{item.sale_id},#{item.product_id},#{item.quantity}) 
+    </foreach> 
+  </insert>
 </mapper>

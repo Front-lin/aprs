@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aprs.entity.DatatablesViewPage;
@@ -64,5 +65,17 @@ public class SaleController {
 			logger.info("delete",e);
 			out.print("false");
 		}
+	}
+	
+	@RequestMapping(value="/settle", method=RequestMethod.POST)
+	public void settle(@RequestParam(value = "sales[]") int[] sales[],double sum, HttpServletResponse response) throws IOException{
+		logger.info("结算");
+		PrintWriter out = response.getWriter();
+		for (int[] sale : sales) {
+			System.out.println(sale.length);
+		}
+		System.out.println(sum);
+		saleService.settle(sales, sum);
+		out.print("true");	
 	}
 }
