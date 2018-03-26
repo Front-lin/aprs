@@ -8,12 +8,14 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aprs.dao.SaleDao;
 import com.aprs.dao.SaleDetailDao;
 import com.aprs.entity.Sale;
 import com.aprs.entity.SaleDetail;
 import com.aprs.service.SaleService;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 @Service("saleService")
 public class SaleServiceImpl implements SaleService {
 
@@ -68,12 +70,14 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public void settle(int[][] sales, double sum) {
+	@Transactional
+	public void settle(int[] arr, int[] num,double sum) throws MySQLIntegrityConstraintViolationException {
 		Sale s = new Sale(sdf.format(new Date()), sum);
 		saleDao.insert(s);
+		System.out.println(s.getSale_id());
 		List<SaleDetail> list = new ArrayList<SaleDetail>();
-		for(int[] sale: sales){
-			list.add(new SaleDetail(s.getSale_id(), sale[0], sale[1]));
+		for(int i=0;i<arr.length;i++){
+			list.add(new SaleDetail(s.getSale_id(), arr[i], num[i]));
 		}
 		saleDetailDao.settle(list);
 		

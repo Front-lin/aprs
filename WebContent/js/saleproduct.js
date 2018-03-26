@@ -74,15 +74,17 @@ var count = 2;
     }
     function settle(){
     	var arr = new Array();
+    	var num = new Array();
     	var sum = table.row(count).data()[5];
     	for(var i=0;i<count;i++){
     		var t =  table.row(i).data();
-    		arr.push(t[0], t[4]);
+    		arr.push(t[0]);
+    		num.push(t[4]);
         }
     	$.ajax({
 			type: "POST",
 			url: "/aprs/settle",
-			data: {sales: arr, sum: sum},
+			data: {arr: arr,count: num, sum: sum},
 					success: function(msg) {
 						if (msg=="false"){
 							alert("添加失败！");

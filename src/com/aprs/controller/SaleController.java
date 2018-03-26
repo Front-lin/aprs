@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aprs.entity.DatatablesViewPage;
 import com.aprs.entity.Sale;
 import com.aprs.service.SaleService;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @Controller
 public class SaleController {
@@ -68,14 +69,16 @@ public class SaleController {
 	}
 	
 	@RequestMapping(value="/settle", method=RequestMethod.POST)
-	public void settle(@RequestParam(value = "sales[]") int[] sales[],double sum, HttpServletResponse response) throws IOException{
+	public void settle(@RequestParam(value = "arr[]") int[] arr, @RequestParam(value = "count[]") int[] count,double sum, HttpServletResponse response) throws IOException{
 		logger.info("结算");
 		PrintWriter out = response.getWriter();
-		for (int[] sale : sales) {
-			System.out.println(sale.length);
+		try {
+			saleService.settle(arr,count,sum);
+		}catch(MySQLIntegrityConstraintViolationException e) {
+			out.print("none");
+		}catch(Exception e) {
+			out.print("false");
 		}
-		System.out.println(sum);
-		saleService.settle(sales, sum);
 		out.print("true");	
 	}
 }

@@ -23,8 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   <insert id="settle" >
    insert into saledetail(sale_id,product_id,quantity) values
-   <foreach collection="list" item="item" separator="," open="(" close=")">  
-         (#{item.sale_id},#{item.product_id},#{item.quantity}) 
+   <foreach collection="saleDetails" item="saleDetail" separator=",">  
+         (#{saleDetail.sale_id},#{saleDetail.product_id},#{saleDetail.quantity})
     </foreach> 
   </insert>
 </mapper>
