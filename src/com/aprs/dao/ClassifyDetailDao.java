@@ -10,4 +10,5 @@ public interface ClassifyDetailDao {
 	public void add(ClassifyDetail classifyDetail);
 	List<ClassifyDetail> queryDetail(int id, int start, int end);
 	public int selectNum(int id);
+	public List<ClassifyDetail> getProductByNum(int cid);
 }

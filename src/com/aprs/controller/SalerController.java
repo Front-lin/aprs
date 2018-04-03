@@ -49,6 +49,7 @@ public class SalerController {
 	public void addSaler(Saler saler,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
+			//收银员信息为空，添加失败
 			if(saler==null){
 				out.print("false");
 			}else {
@@ -75,6 +76,7 @@ public class SalerController {
 	public void updateSaler(Saler saler,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
+			//收银员信息为空，修改失败
 			if(saler==null){
 				out.print("false");
 			}else {

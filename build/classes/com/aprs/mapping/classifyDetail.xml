@@ -16,10 +16,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="deleteDetail" >
       delete from classify_detail where did = #{0}
   </delete>
-       <select id="queryDetail" resultMap="ClassifyDetailResultMap" >
+  <select id="queryDetail" resultMap="ClassifyDetailResultMap" >
 		select did,dname
 		from classify_detail
 		where cid = #{0} limit #{1},#{2} 
+  </select>
+  <select id="getProductByNum" resultMap="ClassifyDetailResultMap" >
+		select * from classify_detail
+		where cid = #{cid}
   </select>
     <select id="selectNum" resultType="int">
       select count(1) from classify_detail where 1=1 and cid = #{0}

@@ -9,4 +9,5 @@ public interface ClassifyService {
 	public int getNum();
 	public void delete(int cid);
 	public void add(Classify classify);
+	public List<Classify> getClassifyByNum(int pid);
 }

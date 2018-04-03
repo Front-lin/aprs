@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
  
      <select id="queryDetail" resultMap="SaleDetailResultMap" >
-		select product_id,product_name,spec,sale_price,quantity,sum_price
-		from saledetail 
+		select s.product_id,p.name,p.product_spec,p.sale_price,s.quantity
+		from saledetail s left join product p on s.product_id = p.product_id
 		where sale_id = #{0} limit #{1},#{2} 
   </select>
     <select id="selectNum" resultType="int">

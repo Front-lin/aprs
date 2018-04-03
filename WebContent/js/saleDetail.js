@@ -52,11 +52,10 @@ $(document).ready( function () {
     		
     		"aoColumns" :[
 				{"mDataProp":"product_id"},
-    			{"mDataProp":"product_name"},
-				{"mDataProp":"spec"},
+    			{"mDataProp":"name"},
+				{"mDataProp":"product_spec"},
 				{"mDataProp":"sale_price"},
 				{"mDataProp":"quantity"},
-				{"mDataProp":"sum_price"},
     		],
             
         });

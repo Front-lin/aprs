@@ -35,6 +35,7 @@ public class ProviderController {
 	@ResponseBody
 	public DatatablesViewPage<Provider> getProvider(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
+		
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));
         List<Provider> list = null;
@@ -60,6 +61,7 @@ public class ProviderController {
 	public void addProvider(Provider provider,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
+			//供应商信息为空，添加失败
 			if(provider==null){
 				out.print("false");
 			}else {
@@ -86,6 +88,7 @@ public class ProviderController {
 	public void updateProvider(Provider provider,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
+			//供应商信息为空，修改失败
 			if(provider==null){
 				out.print("false");
 			}else {

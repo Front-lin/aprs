@@ -11,4 +11,5 @@ public interface ClassifyDao {
 	public List<Classify> getClassify(@Param("start")int start,@Param("end")int end);
 	public void add(Classify classify);
 	public void delete(int cid);
+	public List<Classify> getClassifyByNum(@Param("pid")int pid);
 }

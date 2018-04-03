@@ -61,4 +61,13 @@ public class ClassifyDetailServiceImpl implements ClassifyDetailService {
 
 
 
+
+	@Override
+	public List<ClassifyDetail> getProductByNum(int cid) {
+		// TODO Auto-generated method stub
+		return classifyDetailDao.getProductByNum(cid);
+	}
+
+
+
 }

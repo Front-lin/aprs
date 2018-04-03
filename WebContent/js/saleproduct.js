@@ -1,4 +1,4 @@
-﻿var dataSet = [[459,"name",500,45,1,45],[458,"name",500,45,1,40],["total","","","","",85]];
+﻿var dataSet = [[498,"name",500,45,1,45],[485,"name",500,45,1,40],["total","","","",85]];
 var table;
 var count = 2;
     window.onload = function(e){

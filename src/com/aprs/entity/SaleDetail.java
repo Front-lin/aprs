@@ -3,11 +3,10 @@ package com.aprs.entity;
 public class SaleDetail {
 	private int sale_id;
 	private int product_id;
-	private String product_name;
-	private int spec;
+	private String name;
+	private int product_spec;
 	private int quantity;
 	private double sale_price;
-	private double sum_price;
 	public SaleDetail(){
 		
 	}
@@ -28,17 +27,17 @@ public class SaleDetail {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public String getProduct_name() {
-		return product_name;
+	public String getName() {
+		return name;
 	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getSpec() {
-		return spec;
+	public int getProduct_spec() {
+		return product_spec;
 	}
-	public void setSpec(int spec) {
-		this.spec = spec;
+	public void setProduct_spec(int product_spec) {
+		this.product_spec = product_spec;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -52,11 +51,6 @@ public class SaleDetail {
 	public void setSale_price(double sale_price) {
 		this.sale_price = sale_price;
 	}
-	public double getSum_price() {
-		return sum_price;
-	}
-	public void setSum_price(double sum_price) {
-		this.sum_price = sum_price;
-	}
+
 	
 }

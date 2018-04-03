@@ -34,10 +34,13 @@ private static Logger logger = Logger.getLogger(EmployeeController.class);
 		Object obj = null;
 		String key = null;
 		try {
+			//系统管理员登录
 			if(value==1){
 				obj = employeeService.login(id, password);
 				key = "manager";
-			}if(value==2){
+			}
+			//收银员登录
+			if(value==2){
 				obj = salerService.login(id, password);
 				key = "saler";
 			}
@@ -45,14 +48,19 @@ private static Logger logger = Logger.getLogger(EmployeeController.class);
 			logger.info("login");
 			e.printStackTrace();
 		}finally{
+			//返回登录身份给前端，前端跳转到对应的页面
 			if(key!=null&&obj!=null){
 				session.setAttribute(key, obj);
 				out.print(key);
-				System.out.println(key);
 			}else {
 				out.print("false");
 			}
 		}
+	}
+	@RequestMapping(value="/unlogin",method=RequestMethod.POST)
+	public void unlogin(HttpServletRequest request){
+		System.out.println("t");
+		request.getSession().invalidate();
 	}
 	@RequestMapping(value="/changepassword",method=RequestMethod.POST)
 	public void adminpwd(String opwd,String npwd,HttpServletRequest request,
@@ -61,15 +69,18 @@ private static Logger logger = Logger.getLogger(EmployeeController.class);
 		HttpSession session = request.getSession();
 		Employee admin = (Employee)session.getAttribute("manager");
 		System.out.println(admin);
+		//判断信息不为空
 		if(admin==null){
 			out.print("false");
 			return;
 		}
+		//判断旧密码是否一致
 		if(!admin.getPassword().equals(opwd)){
 			out.print("worng");
 			return;
 		}
 		try {
+			//更改密码
 			admin.setPassword(npwd);
 			employeeService.change(admin);
 			out.print("true");

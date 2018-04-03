@@ -41,6 +41,12 @@ public class ClassifyServiceImpl implements ClassifyService {
 		
 	}
 
+	@Override
+	public List<Classify> getClassifyByNum(int pid) {
+		// TODO Auto-generated method stub
+		return classifyDao.getClassifyByNum(pid);
+	}
+
 
 
 }

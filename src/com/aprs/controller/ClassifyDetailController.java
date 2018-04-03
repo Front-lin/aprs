@@ -2,6 +2,7 @@ package com.aprs.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,13 @@ public class ClassifyDetailController {
 			logger.info("classifyDetail",e);
 			return null;
 		}
+	}
+	@RequestMapping(value="/getProductItem", method=RequestMethod.GET)
+	@ResponseBody
+	public List<ClassifyDetail> getProductItem(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+        int cid = Integer.parseInt(request.getParameter("cid"));
+        return classifyDetailService.getProductByNum(cid);
 	}
 	@RequestMapping(value="/deleteClassifyDetail", method=RequestMethod.POST)
 	public void deleteClassifyDetail(int did,HttpServletResponse response) throws IOException{

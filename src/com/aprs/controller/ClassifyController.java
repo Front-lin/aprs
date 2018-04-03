@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aprs.entity.Classify;
 import com.aprs.entity.DatatablesViewPage;
+import com.aprs.entity.Product;
 import com.aprs.entity.Provider;
 import com.aprs.service.ClassifyDetailService;
 import com.aprs.service.ClassifyService;
@@ -35,7 +36,7 @@ public class ClassifyController {
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));  
         List<Classify> list = null;
-        int num = 0;
+        int num = 0; //数据库中类别的数量
         list = classifyService.getClassify(start, length);
         num = classifyService.getNum();
       
@@ -44,6 +45,13 @@ public class ClassifyController {
 		view.setiTotalRecords(5);
 		view.setAaData(list); 
 		return view;
+	}
+	@RequestMapping(value="/getClassifyItem", method=RequestMethod.GET)
+	@ResponseBody
+	public List<Classify> getClassifyItem(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+        int pid = Integer.parseInt(request.getParameter("pid"));
+        return classifyService.getClassifyByNum(pid);
 	}
 	
 	@RequestMapping(value="/deleteClassify", method=RequestMethod.POST)
@@ -62,6 +70,7 @@ public class ClassifyController {
 	public void addClassify(Classify classify,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
+			//类别信息为空，增加失败
 			if(classify==null){
 				out.print("false");
 			}else {

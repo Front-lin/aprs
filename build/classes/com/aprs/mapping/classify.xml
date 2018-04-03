@@ -14,7 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from classify c inner join provider p on c.pid = p.pid
 		order by c.cname
   </select>
-  
+    <select id="getClassifyByNum" resultMap="ClassifyResultMap" >
+		select * from classify where pid = #{pid}
+  </select>
   <select id="getNum" resultType="int" >
 		select count(1) from classify 
   </select>

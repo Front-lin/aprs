@@ -26,3 +26,13 @@ function saler(){
 function change(){
 	$("#content").attr("src","changepassword.html");
 }
+function buyproduct(){
+	$("#content").attr("src","purchaseproduct.html");
+}
+function unlogin(){
+	$.ajax({
+		type: "POST",
+		url: "/aprs/unlogin",
+	});
+	window.top.location.href = 'login.html';
+}

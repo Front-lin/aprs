@@ -35,14 +35,19 @@ public class ProductController {
         String state = request.getParameter("state");
         List<Product> list = null;
         int num = 0;
+        //显示所有农产品
         if (state.equals("0")){
         	list = productService.getAllProduct(start, length);
         	num = productService.getNum();
-        } else if (state.equals("1")) {
+        } 
+        //显示指定id农产品
+        else if (state.equals("1")) {
         		int product_id = Integer.parseInt(request.getParameter("product_id"));
         		list = productService.getByNum(product_id);
         		num = 1;
-        	 }else if (state.equals("2")) {
+        	 }
+        //显示指定名称的农产品
+        else if (state.equals("2")) {
 	        	String name = request.getParameter("name");
 	        	num = productService.getByArgNum(name);
 	        	list = productService.getByArg(start, length, name);
@@ -87,6 +92,7 @@ public class ProductController {
 	public void updateSale(Product product,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
+			//农产品信息为空不能修改
 			if(product==null){
 				out.print("false");
 			}else {

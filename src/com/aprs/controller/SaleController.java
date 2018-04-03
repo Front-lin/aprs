@@ -35,14 +35,20 @@ public class SaleController {
         int length = Integer.parseInt(request.getParameter("length"));  
         String state = request.getParameter("state");
         List<Sale> list = null;
+        //获取订单数量
         int num = 0;
+        //查询所有销售订单
         if (state.equals("0")){
         	list = saleService.getAll(start, length);
         	num = saleService.getNum();
-        } else if (state.equals("1")) {
+        }
+        //查询销售订单号
+        else if (state.equals("1")) {
 			list = saleService.getByNo(Integer.parseInt(request.getParameter("sale_id")));
 			num = 1;
-		}else if (state.equals("2")) {
+		}
+        //销售时间查询
+        else if (state.equals("2")) {
 			String date = request.getParameter("sale_date");
 			num = saleService.getNumByArgs(date);
 			list = saleService.getByArg(date);
@@ -74,11 +80,12 @@ public class SaleController {
 		PrintWriter out = response.getWriter();
 		try {
 			saleService.settle(arr,count,sum);
+			out.print("true");	
 		}catch(MySQLIntegrityConstraintViolationException e) {
 			out.print("none");
 		}catch(Exception e) {
+			System.out.print(e);
 			out.print("false");
 		}
-		out.print("true");	
 	}
 }
